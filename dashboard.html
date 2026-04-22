@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(150deg, #2E0727 0%, #AB4D26 60%, #D99B36 100%);
+      padding: 2rem;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+    }
+    header h1 { font-size: 22px; font-weight: 700; color: #FDF3D4; }
+    header span { font-size: 13px; color: #f0d9a8; display: block; }
+    .btn-sair {
+      padding: 8px 18px;
+      border: 1.5px solid #FDF3D4;
+      border-radius: 8px;
+      background: transparent;
+      color: #FDF3D4;
+      font-family: 'Poppins', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-sair:hover { background: #FDF3D4; color: #2E0727; }
+    .info-box {
+      background: #FDF3D4;
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-bottom: 1rem;
+    }
+    .info-box p { font-size: 14px; color: #2E0727; }
+    .info-box strong { color: #AB4D26; }
+    .info-box small { font-size: 12px; color: #AB4D26; display: block; margin-top: 4px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 1rem; }
+    .tbtn {
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #FDF3D4;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(46,7,39,0.18);
+    }
+    .card h2 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #2E0727;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid #e8d9c8;
+    }
+    .item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid #f0e6d3;
+      font-size: 13px;
+      color: #2E0727;
+    }
+    .item:last-child { border-bottom: none; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .dot-ok  { background: #AB4D26; }
+    .dot-red { background: #e53935; }
+    .bloq { opacity: 0.4; text-decoration: line-through; }
+    .tag {
+      font-size: 10px;
+      border-radius: 5px;
+      padding: 2px 8px;
+      font-weight: 600;
+      margin-left: auto;
+    }
+    .tag-ok { background: #f3ddd3; color: #AB4D26; }
+    .tag-no { background: #f5c6c6; color: #a32d2d; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>
+      <h1>Login Web</h1>
+      <span id="info-email"></span>
+    </div>
+    <button class="btn-sair" id="btn-sair">Sair</button>
+  </header>
+
+  <div class="info-box">
+    <p>Bem-vindo! Você está logado como <strong id="info-cargo"></strong>.</p>
+    <small>Os itens abaixo mostram o que seu cargo pode ou não acessar no banco de dados.</small>
+  </div>
+
+  <div class="tabs" id="tabs-cargo"></div>
+
+  <div class="grid" id="grid-cards"></div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

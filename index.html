@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Web</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(150deg, #2E0727 0%, #AB4D26 60%, #D99B36 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .card {
+      background: #FDF3D4;
+      padding: 32px 30px;
+      border-radius: 18px;
+      width: 100%;
+      max-width: 370px;
+      box-shadow: 0 12px 40px rgba(46,7,39,0.28);
+    }
+    h1 {
+      font-size: 30px;
+      font-weight: 700;
+      color: #2E0727;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+    .tabs {
+      display: flex;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #e8d9c8;
+    }
+    .tab {
+      flex: 1;
+      padding: 10px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Poppins', sans-serif;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #bca98a;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: all 0.2s;
+    }
+    .tab.active { color: #AB4D26; border-bottom: 2px solid #AB4D26; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .field {
+      width: 100%;
+      padding: 11px 14px;
+      margin-bottom: 13px;
+      border: 1.5px solid #e8d9c8;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      color: #2E0727;
+      background: #fffdf7;
+      transition: border 0.2s;
+    }
+    .field:focus { border-color: #AB4D26; }
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 4px 0 14px;
+      color: #bca98a;
+      font-size: 12px;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: #e8d9c8;
+    }
+    .btn-primary {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      background: linear-gradient(90deg, #AB4D26, #D99B36);
+      color: white;
+      letter-spacing: 0.3px;
+      margin-bottom: 10px;
+    }
+    .cargo-note {
+      font-size: 11px;
+      color: #bca98a;
+      text-align: center;
+      margin-top: -6px;
+      margin-bottom: 12px;
+    }
+    #mensagem { text-align: center; font-size: 13px; color: #AB4D26; margin-top: 8px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Login Web</h1>
+    <div class="tabs">
+      <button class="tab active" onclick="switchTab('login', this)">Entrar</button>
+      <button class="tab" onclick="switchTab('cadastro', this)">Cadastrar</button>
+    </div>
+
+    <div id="panel-login" class="panel active">
+      <input class="field" type="email" id="login-email" placeholder="E-mail" />
+      <input class="field" type="password" id="login-senha" placeholder="Senha" />
+      <button class="btn-primary" id="btn-login">Entrar</button>
+    </div>
+
+    <div id="panel-cadastro" class="panel">
+      <input class="field" type="email" id="cad-email" placeholder="E-mail" />
+      <input class="field" type="password" id="cad-senha" placeholder="Senha (mín. 6 caracteres)" />
+      <div class="divider">tipo de conta</div>
+      <select class="field" id="cad-cargo">
+        <option value="user">Usuário comum</option>
+        <option value="admin">Administrador</option>
+      </select>
+      <p class="cargo-note">O cargo define quais dados você pode acessar.</p>
+      <button class="btn-primary" id="btn-cadastrar">Criar conta</button>
+    </div>
+
+    <p id="mensagem"></p>
+  </div>
+
+  <script type="module" src="app.js"></script>
+  <script>
+    function switchTab(panel, el) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('panel-' + panel).classList.add('active');
+    }
+  </script>
+</body>
+</html>
